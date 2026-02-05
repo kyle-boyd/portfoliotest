@@ -1,5 +1,6 @@
 "use client";
 
+import { assetUrl } from "@/lib/base-path";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -87,7 +88,7 @@ export function MiniProjectCard({
           }}
         >
           <img
-            src={image}
+            src={assetUrl(image)}
             alt={title}
             className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[8px]"
           />

@@ -1,3 +1,4 @@
+import { assetUrl } from "@/lib/base-path";
 import { Section } from "./section";
 
 const TOOLS = [
@@ -21,7 +22,7 @@ function ToolLogo({ name, src, href }: (typeof TOOLS)[number]) {
       aria-label={name}
     >
       <img
-        src={src}
+        src={assetUrl(src)}
         alt={name}
         className="h-full w-full object-contain opacity-90"
       />

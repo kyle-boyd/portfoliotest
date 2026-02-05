@@ -1,5 +1,6 @@
 "use client";
 
+import { assetUrl } from "@/lib/base-path";
 import Link from "next/link";
 import { useRef, type RefObject } from "react";
 
@@ -109,7 +110,7 @@ export function ProjectCard({
           }}
         >
           <img
-            src={imageSrc}
+            src={assetUrl(imageSrc)}
             alt={title}
             className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[10px]"
           />

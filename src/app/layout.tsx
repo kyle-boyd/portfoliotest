@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Crimson_Text } from "next/font/google";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Crimson_Text, Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,6 +18,11 @@ const crimsonText = Crimson_Text({
   variable: "--font-crimson",
 });
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
 export const metadata: Metadata = {
   title: "Kyle Boyd — Product Designer",
   description:
@@ -33,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${crimsonText.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${crimsonText.variable} ${outfit.variable} antialiased`}
       >
         {children}
       </body>

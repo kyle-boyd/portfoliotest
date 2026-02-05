@@ -1,3 +1,5 @@
+import { assetUrl } from "@/lib/base-path";
+
 type CaseStudyImageProps = {
   src: string;
   alt: string;
@@ -15,7 +17,7 @@ export function CaseStudyImage({
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={src}
+        src={assetUrl(src)}
         alt={alt}
         className="block w-full max-w-full h-auto object-contain"
       />
