@@ -19,7 +19,7 @@ export function Hero({ name, title, location, currentlyAt }: HeroProps) {
             enterprise solutions.
           </span>
         </h1>
-        <div className="space-y-4 text-[0.98rem] leading-relaxed text-zinc-300/90">
+        <div className="space-y-4 text-[0.98rem] leading-relaxed text-zinc-300/90" style={{ fontFamily: "var(--font-outfit)" }}>
           <p>
             I&apos;m a product designer based in Denver, Colorado with 10+ years
             of experience designing complex systems in both the physical and

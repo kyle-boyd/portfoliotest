@@ -1,6 +1,11 @@
+import { ConnectSection, ConnectLinks } from "@/components/connect-section";
 import { Hero } from "@/components/hero";
+import { Section } from "@/components/section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ToolsSection } from "@/components/tools-section";
+import { getSelectedWork } from "@/data/case-studies";
+import { ProjectCard } from "@/components/project-card";
 
 export const metadata = {
   title: "Kyle Boyd — Product Designer",
@@ -22,6 +27,26 @@ export default function HomePage() {
           location="Denver, Colorado"
           currentlyAt="CoEnterprise"
         />
+
+        <ConnectLinks />
+
+        <Section
+          id="work"
+          title="Work"
+          subtitle="See case studies of some projects that I have worked on."
+          viewAllHref="/work"
+          heroStyle
+        >
+          <div className="grid grid-cols-1 gap-24 md:grid-cols-1">
+            {getSelectedWork().slice(0, 3).map((project) => (
+              <ProjectCard key={project.slug} {...project} />
+            ))}
+          </div>
+        </Section>
+
+        <ToolsSection />
+
+        <ConnectSection />
       </div>
 
       <SiteFooter />
