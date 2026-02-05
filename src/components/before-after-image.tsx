@@ -48,6 +48,11 @@ export function BeforeAfterImage({
     isDragging.current = false;
   }, []);
 
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    e.preventDefault();
+    isDragging.current = true;
+  }, []);
+
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
@@ -83,7 +88,7 @@ export function BeforeAfterImage({
           handleMove(e.clientX);
         }
       }}
-      onTouchStart={handleMouseDown}
+      onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleMouseUp}
       onKeyDown={handleKeyDown}

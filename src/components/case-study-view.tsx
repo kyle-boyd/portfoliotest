@@ -171,10 +171,12 @@ function SectionBlock({
               </p>
             </div>
             <div className="min-w-0 flex-1 space-y-2">
-              <CaseStudyImage
-                src={section.image}
-                alt={section.caption || section.title}
-              />
+              {section.image && (
+                <CaseStudyImage
+                  src={section.image}
+                  alt={section.caption || section.title}
+                />
+              )}
               {section.caption && (
                 <p className="text-sm text-zinc-400">{section.caption}</p>
               )}
