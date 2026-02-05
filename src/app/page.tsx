@@ -3,7 +3,6 @@ import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ToolsSection } from "@/components/tools-section";
 import { getSelectedWork } from "@/data/case-studies";
 import { ProjectCard } from "@/components/project-card";
 
@@ -43,8 +42,6 @@ export default function HomePage() {
             ))}
           </div>
         </Section>
-
-        <ToolsSection />
 
         <ConnectSection />
       </div>

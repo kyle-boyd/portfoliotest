@@ -27,6 +27,12 @@ export const metadata: Metadata = {
   title: "Kyle Boyd — Product Designer",
   description:
     "Product designer based in Denver, Colorado. Building in product & systems for enterprise solutions.",
+  icons: {
+    icon:
+      process.env.NODE_ENV === "production"
+        ? "/portfoliotest/images/kbLogo.svg"
+        : "/images/kbLogo.svg",
+  },
 };
 
 export default function RootLayout({
