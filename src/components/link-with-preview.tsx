@@ -1,5 +1,6 @@
 "use client";
 
+import { assetUrl } from "@/lib/base-path";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
@@ -21,7 +22,7 @@ function LinkedInPreview() {
         {/* Avatar */}
         <div className="-mt-6 flex justify-center">
           <Image
-            src="/images/headshot.png"
+            src={assetUrl("/images/headshot.png")}
             alt=""
             width={48}
             height={48}

@@ -3,6 +3,7 @@ import { ConnectSection, ConnectLinks } from "@/components/connect-section";
 import { ToolsSection } from "@/components/tools-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { assetUrl } from "@/lib/base-path";
 
 export const metadata = {
   title: "About — Kyle Boyd",
@@ -31,7 +32,7 @@ export default function AboutPage() {
 
         <AboutSection
           narrative={ABOUT_NARRATIVE}
-          imageSrc="/images/hiking.jpeg"
+          imageSrc={assetUrl("/images/hiking.jpeg")}
           imageCaption="Hiking in the Rockies (I'm the one on the right)"
           career={ABOUT_CAREER}
         />

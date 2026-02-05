@@ -1,3 +1,4 @@
+import { assetUrl } from "@/lib/base-path";
 import { Section } from "./section";
 import { LinkWithPreview } from "./link-with-preview";
 
@@ -10,7 +11,7 @@ export function ConnectLinks() {
         variant="linkedin"
       />
       <LinkWithPreview
-        href="/images/kyleboyd_resume.pdf"
+        href={assetUrl("/images/kyleboyd_resume.pdf")}
         label="Resume"
         variant="resume"
       />
