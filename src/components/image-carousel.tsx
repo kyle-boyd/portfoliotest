@@ -21,7 +21,7 @@ function normalizeItems(
   );
 }
 
-const SLIDES_PER_VIEW = 2;
+const SLIDES_PER_VIEW = 1;
 
 export function ImageCarousel({ items: rawItems, className = "" }: ImageCarouselProps) {
   const items = normalizeItems(rawItems);

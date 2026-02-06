@@ -27,7 +27,7 @@ export function Lightbox({ src, alt, onClose }: LightboxProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
       role="dialog"
       aria-modal="true"
       aria-label="Image lightbox"
@@ -53,14 +53,21 @@ export function Lightbox({ src, alt, onClose }: LightboxProps) {
           />
         </svg>
       </button>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        className="max-h-full max-w-full object-contain"
+      <div
+        className="flex min-h-0 min-w-0 flex-1 items-center justify-center"
         onClick={(e) => e.stopPropagation()}
-        draggable={false}
-      />
+      >
+        <div className="flex size-full max-h-[calc(100vh-2rem)] max-w-[calc(100vw-2rem)] items-center justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            className="max-h-full max-w-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+            draggable={false}
+          />
+        </div>
+      </div>
     </div>
   );
 }

@@ -247,7 +247,7 @@ function SectionBlock({
                 alt={section.caption || section.title}
               />
             ) : section.images && section.images.length > 1 ? (
-              <div className="relative left-1/2 w-screen -translate-x-1/2 px-4 sm:px-6">
+              <div className="relative left-1/2 w-[75vw] max-w-[1200px] -translate-x-1/2 px-4 sm:px-6">
                 <ImageCarousel
                   items={section.images.map((src) => ({
                     src,
@@ -294,10 +294,35 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           >
             {hero.subtitle}
           </h1>
-          {hero.description ? (
-            <p className="max-w-[900px] text-base leading-relaxed text-zinc-300/90">
-              {hero.description}
-            </p>
+          {study.impact && (study.impact.outcomes?.length || study.impact.measurement) ? (
+            <div className="max-w-[900px] space-y-4">
+              <h3
+                className="text-[20px] font-semibold text-zinc-50"
+                style={{ fontFamily: "var(--font-crimson)" }}
+              >
+                Impact & measurement
+              </h3>
+              {study.impact.outcomes && study.impact.outcomes.length > 0 && (
+                <div className={`${itemGridClasses}`}>
+                  {study.impact.outcomes.map((outcome, i) => (
+                    <div key={i} className={itemRowClasses}>
+                      <OutcomeCheckIcon />
+                      <div className="min-w-0 space-y-1">
+                        <p className="font-bold text-zinc-100">{outcome.title}</p>
+                        <p className="text-base leading-relaxed text-zinc-300">
+                          {outcome.body}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {study.impact.measurement && (
+                <p className="text-sm text-zinc-400">
+                  <em>{study.impact.measurement}</em>
+                </p>
+              )}
+            </div>
           ) : null}
         </header>
 
@@ -305,38 +330,6 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
         <div className="border-t border-white/10 py-8">
           <MetaGrid meta={meta} />
         </div>
-
-        {/* Impact & measurement */}
-        {study.impact && (study.impact.outcomes?.length || study.impact.measurement) && (
-          <div className="border-t border-white/10 py-8">
-            <h3
-              className="mb-4 text-[20px] font-semibold text-zinc-50"
-              style={{ fontFamily: "var(--font-crimson)" }}
-            >
-              Impact & measurement
-            </h3>
-            {study.impact.outcomes && study.impact.outcomes.length > 0 && (
-              <div className={`mb-4 ${itemGridClasses}`}>
-                {study.impact.outcomes.map((outcome, i) => (
-                  <div key={i} className={itemRowClasses}>
-                    <OutcomeCheckIcon />
-                    <div className="min-w-0 space-y-1">
-                      <p className="font-bold text-zinc-100">{outcome.title}</p>
-                      <p className="text-base leading-relaxed text-zinc-300">
-                        {outcome.body}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {study.impact.measurement && (
-              <p className="text-sm text-zinc-400 max-w-[900px]">
-                <em>{study.impact.measurement}</em>
-              </p>
-            )}
-          </div>
-        )}
 
         {/* Sections */}
         <div>
