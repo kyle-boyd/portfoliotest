@@ -181,6 +181,7 @@ function SectionBlock({
                 <CaseStudyImage
                   src={section.image}
                   alt={section.caption || section.title}
+                  lightbox
                 />
               )}
               {section.caption && (
@@ -258,6 +259,7 @@ function SectionBlock({
               <CaseStudyImage
                 src={section.image}
                 alt={section.caption || section.title}
+                lightbox
               />
             ) : null}
             {section.caption && (

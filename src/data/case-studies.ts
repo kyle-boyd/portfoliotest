@@ -64,48 +64,6 @@ export type SelectedWorkItem = {
 };
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
-  coenterprise: {
-    slug: "coenterprise",
-    hero: {
-      title: "CoEnterprise",
-      subtitle: "Leading design for Syncrofy and supply chain analytics",
-      description:
-        "Leading product design and strategy for Syncrofy—supply chain analytics tools used daily by Fortune 500 companies. Setting product direction, defining north star metrics, and shipping features that help enterprises track goods and information.",
-    },
-    meta: {
-      role: "Lead Designer",
-      employer: "CoEnterprise",
-      areas: "Product Strategy, Design, Analytics",
-      teamScope: "Lead designer; setting product direction and strategy for Syncrofy. Partnered with product, engineering, and stakeholders.",
-    },
-    cardImage: "/images/projectimages/syncrofymain.avif",
-    themeColor: "#334155",
-    impact: {
-      outcomes: [
-        { title: "Product strategy and roadmap.", body: "Defining product direction, north star metrics, and roadmap tradeoffs for supply chain analytics." },
-        { title: "Enterprise tool adoption.", body: "Designing analytics tools that Fortune 500 companies use daily to track goods and information." },
-      ],
-      measurement: "Track adoption and usage; full outcomes to be added as metrics become available.",
-    },
-    sections: [
-      {
-        title: "Problem framing",
-        body: "CoEnterprise is the company; Syncrofy is the product. CoEnterprise builds Syncrofy—supply chain analytics tools for Fortune 500 companies. The challenge: help enterprises track goods and information across complex, multi-party supply chains—while delivering a cohesive product experience that scales with user needs.",
-      },
-      {
-        title: "Strategy and roadmap",
-        body: "As Lead Designer I set product direction and strategy: defining north star metrics, prioritizing roadmap tradeoffs, and aligning cross-functional teams. This section will be expanded with specific decisions, tradeoffs, and what shipped.",
-      },
-      {
-        title: "What shipped",
-        body: "Features and improvements to supply chain analytics tools, used daily by enterprise customers. Add specific screens, flows, and outcomes as you document this work.",
-      },
-      {
-        title: "Reflection",
-        body: "Leading design at CoEnterprise has reinforced the importance of aligning strategy with execution—and of designing for complexity while keeping the user experience clear and actionable.",
-      },
-    ],
-  },
   clay: {
     slug: "clay",
     hero: {
@@ -571,7 +529,6 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
 };
 
 export const CASE_STUDY_SLUGS = [
-  "coenterprise",
   "syncrofy",
   "lighthouse",
   "slab-design-system",
@@ -582,7 +539,6 @@ export const CASE_STUDY_SLUGS = [
 
 /** Curated "Start here" slugs for home page: strongest enterprise UX and measurable impact */
 export const FEATURED_SLUGS = [
-  "coenterprise",
   "syncrofy",
   "lighthouse",
   "acelab",
@@ -602,8 +558,8 @@ function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
       .join(" / ");
     return {
       slug,
-      title: study.hero.title,
-      client: clientLine || study.hero.subtitle,
+      title: study.hero.subtitle,
+      client: clientLine || study.hero.title,
       description: study.hero.description,
       year: "2024",
       scope: study.meta.areas.split(",")[0]?.trim() ?? "Product Design",

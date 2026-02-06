@@ -74,6 +74,7 @@ export function ImageCarousel({ items: rawItems, className = "" }: ImageCarousel
                 src={item.src}
                 alt={item.alt ?? ""}
                 className="shadow-lg max-w-full"
+                lightbox
               />
             </div>
           ))}

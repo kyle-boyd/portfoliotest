@@ -5,6 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getFeaturedWork } from "@/data/case-studies";
 import { ProjectCard } from "@/components/project-card";
+import { WRITING_ARTICLES } from "@/data/writing";
+import { PLAYGROUND_PROJECTS } from "@/data/playground";
+import { WritingArticle } from "@/components/writing-article";
+import { MiniProjectCard } from "@/components/mini-project-card";
 
 export const metadata = {
   title: "Kyle Boyd — Product Designer",
@@ -32,20 +36,38 @@ export default function HomePage() {
         <Section
           id="work"
           title="Work"
-          subtitle="Selected case studies with quantified impact and enterprise systems thinking."
           viewAllHref="/work"
           heroStyle
         >
-          <p
-            className="mb-12 text-base text-zinc-400"
-            style={{ fontFamily: "var(--font-outfit)" }}
-          >
-            Start here: CoEnterprise, Syncrofy, Lighthouse, and Acelab showcase
-            my strongest enterprise UX and measurable impact.
-          </p>
           <div className="grid grid-cols-1 gap-24 md:grid-cols-1">
             {getFeaturedWork().map((project) => (
               <ProjectCard key={project.slug} {...project} />
+            ))}
+          </div>
+        </Section>
+
+        <Section
+          id="writing"
+          title="Writing"
+          subtitle="I find writing to be another way to express creative ideas."
+          viewAllHref="/writing"
+        >
+          <div className="space-y-2">
+            {WRITING_ARTICLES.slice(0, 3).map((article) => (
+              <WritingArticle key={article.title} {...article} />
+            ))}
+          </div>
+        </Section>
+
+        <Section
+          id="playground"
+          title="Exploration & Side Projects"
+          subtitle="Snapshots, explorations, and side-projects."
+          viewAllHref="/playground"
+        >
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {PLAYGROUND_PROJECTS.slice(0, 4).map((project) => (
+              <MiniProjectCard key={project.title} {...project} />
             ))}
           </div>
         </Section>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { assetUrl } from "@/lib/base-path";
 
 type BeforeAfterImageProps = {
   oldSrc: string;
@@ -70,13 +71,15 @@ export function BeforeAfterImage({
     [handleMove]
   );
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "ArrowLeft") setPosition((p) => Math.max(0, p - 5));
-      else if (e.key === "ArrowRight") setPosition((p) => Math.min(100, p + 5));
-    },
-    []
-  );
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setPosition((p) => Math.max(0, p - 5));
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setPosition((p) => Math.min(100, p + 5));
+    }
+  }, []);
 
   return (
     <div
@@ -103,7 +106,7 @@ export function BeforeAfterImage({
         {/* After (new) - full background */}
         <div className="absolute inset-0">
           <Image
-            src={newSrc}
+            src={assetUrl(newSrc)}
             alt={`${alt} (after)`}
             fill
             className="object-contain"
@@ -117,7 +120,7 @@ export function BeforeAfterImage({
           style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         >
           <Image
-            src={oldSrc}
+            src={assetUrl(oldSrc)}
             alt={`${alt} (before)`}
             fill
             className="object-contain object-left"
@@ -128,10 +131,10 @@ export function BeforeAfterImage({
         {/* Slider track and handle */}
         <div
           data-slider-handle
-          className="absolute inset-y-0 w-1 cursor-ew-resize select-none"
+          className="absolute inset-y-0 w-10 cursor-ew-resize select-none touch-none"
           style={{ left: `${position}%`, transform: "translateX(-50%)" }}
         >
-          <div className="absolute inset-0 w-1 bg-white/80 transition group-hover:bg-white" />
+          <div className="absolute inset-y-0 left-1/2 w-1 -translate-x-1/2 bg-white/80 transition group-hover:bg-white" />
           <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white/90 bg-zinc-900 shadow-lg transition group-hover:scale-110">
             <svg
               className="h-5 w-5 text-white"
