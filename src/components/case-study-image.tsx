@@ -19,6 +19,8 @@ export function CaseStudyImage({
       <img
         src={assetUrl(src)}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         className="block w-full max-w-full h-auto object-contain"
       />
     </div>

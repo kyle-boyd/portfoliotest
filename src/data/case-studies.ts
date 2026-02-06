@@ -3,6 +3,8 @@ export type CaseStudyMeta = {
   client?: string;
   employer?: string;
   areas: string;
+  /** Team context: who else designed, who PM/Eng were, what you owned */
+  teamScope?: string;
 };
 
 export type CaseStudySection = {
@@ -28,6 +30,12 @@ export type CaseStudySection = {
   imagePosition?: "left" | "right";
 };
 
+export type CaseStudyImpact = {
+  outcomes?: { title: string; body: string }[];
+  /** e.g. "Measured via analytics and user surveys over 6 weeks post-launch" */
+  measurement?: string;
+};
+
 export type CaseStudy = {
   slug: string;
   hero: {
@@ -39,6 +47,7 @@ export type CaseStudy = {
   cardImage: string;
   themeColor: string;
   sections: CaseStudySection[];
+  impact?: CaseStudyImpact;
 };
 
 export type SelectedWorkItem = {
@@ -55,6 +64,48 @@ export type SelectedWorkItem = {
 };
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
+  coenterprise: {
+    slug: "coenterprise",
+    hero: {
+      title: "CoEnterprise",
+      subtitle: "Leading design for Syncrofy and supply chain analytics",
+      description:
+        "Leading product design and strategy for Syncrofy—supply chain analytics tools used daily by Fortune 500 companies. Setting product direction, defining north star metrics, and shipping features that help enterprises track goods and information.",
+    },
+    meta: {
+      role: "Lead Designer",
+      employer: "CoEnterprise",
+      areas: "Product Strategy, Design, Analytics",
+      teamScope: "Lead designer; setting product direction and strategy for Syncrofy. Partnered with product, engineering, and stakeholders.",
+    },
+    cardImage: "/images/projectimages/syncrofymain.avif",
+    themeColor: "#334155",
+    impact: {
+      outcomes: [
+        { title: "Product strategy and roadmap.", body: "Defining product direction, north star metrics, and roadmap tradeoffs for supply chain analytics." },
+        { title: "Enterprise tool adoption.", body: "Designing analytics tools that Fortune 500 companies use daily to track goods and information." },
+      ],
+      measurement: "Track adoption and usage; full outcomes to be added as metrics become available.",
+    },
+    sections: [
+      {
+        title: "Problem framing",
+        body: "CoEnterprise is the company; Syncrofy is the product. CoEnterprise builds Syncrofy—supply chain analytics tools for Fortune 500 companies. The challenge: help enterprises track goods and information across complex, multi-party supply chains—while delivering a cohesive product experience that scales with user needs.",
+      },
+      {
+        title: "Strategy and roadmap",
+        body: "As Lead Designer I set product direction and strategy: defining north star metrics, prioritizing roadmap tradeoffs, and aligning cross-functional teams. This section will be expanded with specific decisions, tradeoffs, and what shipped.",
+      },
+      {
+        title: "What shipped",
+        body: "Features and improvements to supply chain analytics tools, used daily by enterprise customers. Add specific screens, flows, and outcomes as you document this work.",
+      },
+      {
+        title: "Reflection",
+        body: "Leading design at CoEnterprise has reinforced the importance of aligning strategy with execution—and of designing for complexity while keeping the user experience clear and actionable.",
+      },
+    ],
+  },
   clay: {
     slug: "clay",
     hero: {
@@ -68,9 +119,17 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       client: "Google REWS",
       employer: "Outer Labs",
       areas: "Design, Discovery, Strategy",
+      teamScope: "First designer on Clay; collaborated with product, engineering, and designers from previously disconnected applications.",
     },
     cardImage: "/images/projectimages/claymain.avif",
     themeColor: "#94a3b8",
+    impact: {
+      outcomes: [
+        { title: "Unified navigation model.", body: "Projects and Studies structure replaced fragmented app boundaries, enabling users to move seamlessly across programming, design, and financial planning." },
+        { title: "Faster study discovery.", body: "Search and metadata cues help users find the right study or project without manual browsing." },
+      ],
+      measurement: "Validated through user research and internal workshops with Project Executives, Analysts, and design partners.",
+    },
     sections: [
       {
         image: "/images/clay_combined.png",
@@ -123,9 +182,13 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       client: "Google",
       employer: "Outer Labs",
       areas: "Design, Strategy",
+      teamScope: "Sole designer; partnered with product and engineering. User research with Google planners informed prioritization.",
     },
     cardImage: "/images/projectimages/lhmain.avif",
     themeColor: "#64748b",
+    impact: {
+      measurement: "50% faster report generation measured via planner time-tracking and feedback over the first 3 months post-launch.",
+    },
     sections: [
       {
         image: "/images/lh_vid.gif",
@@ -195,9 +258,13 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       role: "UX Designer",
       employer: "Acelab",
       areas: "UX/UI, Navigation, Research",
+      teamScope: "Led navigation redesign; collaborated with product, engineering, and internal stakeholders. Validated with power users and architects.",
     },
     cardImage: "/images/projectimages/acelabmain.avif",
     themeColor: "#475569",
+    impact: {
+      measurement: "70% reduction in dead-end clicks measured via analytics over 8 weeks post-launch; validated through user feedback from architects and designers.",
+    },
     sections: [
       {
         image: "/images/acelab_navigation/previous_navigation.png",
@@ -254,9 +321,17 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       role: "Product Designer",
       employer: "Acelab",
       areas: "Design System, Component Building",
+      teamScope: "Owned design system vision; partnered with engineering to align Figma tokens with Vue, Tailwind, and CSS. Incremental rollout across product teams.",
     },
     cardImage: "/images/projectimages/acelabdsmain.avif",
     themeColor: "#71717a",
+    impact: {
+      outcomes: [
+        { title: "Streamlined handoff.", body: "Design tokens and shared components reduced design–engineering back-and-forth and sped up implementation." },
+        { title: "Consistent UI scaling.", body: "Atomic components and a clear hierarchy enabled the application to grow without visual drift." },
+      ],
+      measurement: "Tracked via component adoption across screens and qualitative feedback from design and engineering teams during rollout.",
+    },
     sections: [
       {
         image: "/images/slabds_buttons.png",
@@ -308,9 +383,17 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       client: "Google GR+D",
       employer: "Outer Labs",
       areas: "Design, Prototyping",
+      teamScope: "Sole designer; collaborated with product and engineering. Addressed non-uniform cost coding and one-to-one comparison constraints.",
     },
     cardImage: "/images/projectimages/calibratormain.avif",
     themeColor: "#78716c",
+    impact: {
+      outcomes: [
+        { title: "Granular cost comparison.", body: "Users can compare cost items at the lowest level, including cost-per-unit, across projects with non-uniform coding." },
+        { title: "Reduced comparison friction.", body: "Project detail cards and expandable categories help users find relevant data without manual cross-referencing." },
+      ],
+      measurement: "Validated through user testing with GR+D cost analysts; adoption tracked via feature usage after launch.",
+    },
     sections: [
       {
         image: "/images/calibrator_map.png",
@@ -343,12 +426,14 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     hero: {
       title: "Syncrofy File Transfer",
       subtitle: "Designing a Scalable Filtering System for Syncrofy FT",
-      description: "",
+      description:
+        "Designing a scalable filtering system for Syncrofy FT, handling 200,000+ enterprise data transfers per hour. Reduced cognitive overload via progressive disclosure while maintaining 100% feature parity.",
     },
     meta: {
       role: "Lead Product Designer (sole designer)",
-      employer: "Syncrofy",
+      employer: "CoEnterprise",
       areas: "Full platform UI redesign, Transfer List, Dashboards",
+      teamScope: "Sole designer; partnered with CEO, Director of Product, PM, and Engineering. 4-month single-release timeline.",
     },
     cardImage: "/images/projectimages/syncrofymain.avif",
     themeColor: "#526070",
@@ -479,10 +564,14 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "This project reinforced that enterprise design success often comes down to sequencing complexity, not eliminating it. When research and iteration are constrained, principled decisions grounded in usage data and system logic can dramatically reduce risk while setting a foundation for future validation.",
       },
     ],
+    impact: {
+      measurement: "Outcomes grounded in forensic audit of legacy usage data (99% of filter interactions in 8 facets). Validated through stakeholder alignment and post-launch feedback.",
+    },
   },
 };
 
 export const CASE_STUDY_SLUGS = [
+  "coenterprise",
   "syncrofy",
   "lighthouse",
   "slab-design-system",
@@ -491,14 +580,22 @@ export const CASE_STUDY_SLUGS = [
   "calibrator",
 ] as const;
 
+/** Curated "Start here" slugs for home page: strongest enterprise UX and measurable impact */
+export const FEATURED_SLUGS = [
+  "coenterprise",
+  "syncrofy",
+  "lighthouse",
+  "acelab",
+] as const;
+
 export type CaseStudySlug = (typeof CASE_STUDY_SLUGS)[number];
 
 export function getCaseStudy(slug: string): CaseStudy | null {
   return CASE_STUDIES[slug] ?? null;
 }
 
-export function getSelectedWork(): SelectedWorkItem[] {
-  return CASE_STUDY_SLUGS.map((slug) => {
+function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
+  return slugs.map((slug) => {
     const study = CASE_STUDIES[slug];
     const clientLine = [study.meta.client, study.meta.employer]
       .filter(Boolean)
@@ -516,4 +613,12 @@ export function getSelectedWork(): SelectedWorkItem[] {
       themeColor: study.themeColor,
     };
   });
+}
+
+export function getSelectedWork(): SelectedWorkItem[] {
+  return workItemsForSlugs(CASE_STUDY_SLUGS);
+}
+
+export function getFeaturedWork(): SelectedWorkItem[] {
+  return workItemsForSlugs(FEATURED_SLUGS);
 }

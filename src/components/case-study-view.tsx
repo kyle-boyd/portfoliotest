@@ -32,16 +32,22 @@ function MetaGrid({ meta }: { meta: CaseStudyMeta }) {
     meta.client && { label: "Client", value: meta.client },
     meta.employer && { label: "Employer", value: meta.employer },
     { label: "Focus areas", value: meta.areas },
+    meta.teamScope && { label: "Team scope", value: meta.teamScope },
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
     <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
       {items.map(({ label, value }) => (
-        <div key={label} className="space-y-1">
-          <p className="text-sm font-medium tracking-wider text-zinc-400">
-            {label}
-          </p>
-          <p className="text-base font-medium text-zinc-200">{value}</p>
+        <div
+          key={label}
+          className={label === "Team scope" ? "col-span-2 sm:col-span-4" : undefined}
+        >
+          <div className="space-y-1">
+            <p className="text-sm font-medium tracking-wider text-zinc-400">
+              {label}
+            </p>
+            <p className="text-base font-medium text-zinc-200">{value}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -271,7 +277,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
       <div className="mx-auto max-w-[900px] px-6 pb-24 pt-28 sm:px-10 sm:pt-32">
         {/* Back link */}
         <Link
-          href="/#selected-work"
+          href="/#work"
           className="mb-12 inline-flex items-center text-xs font-medium tracking-wider text-zinc-400 transition hover:text-zinc-200"
         >
           <span className="mr-2">←</span>
@@ -297,6 +303,38 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
         <div className="border-t border-white/10 py-8">
           <MetaGrid meta={meta} />
         </div>
+
+        {/* Impact & measurement */}
+        {study.impact && (study.impact.outcomes?.length || study.impact.measurement) && (
+          <div className="border-t border-white/10 py-8">
+            <h3
+              className="mb-4 text-[20px] font-semibold text-zinc-50"
+              style={{ fontFamily: "var(--font-crimson)" }}
+            >
+              Impact & measurement
+            </h3>
+            {study.impact.outcomes && study.impact.outcomes.length > 0 && (
+              <div className={`mb-4 ${itemGridClasses}`}>
+                {study.impact.outcomes.map((outcome, i) => (
+                  <div key={i} className={itemRowClasses}>
+                    <OutcomeCheckIcon />
+                    <div className="min-w-0 space-y-1">
+                      <p className="font-bold text-zinc-100">{outcome.title}</p>
+                      <p className="text-base leading-relaxed text-zinc-300">
+                        {outcome.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {study.impact.measurement && (
+              <p className="text-sm text-zinc-400 max-w-[900px]">
+                <em>{study.impact.measurement}</em>
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Sections */}
         <div>

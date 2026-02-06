@@ -17,6 +17,8 @@ export type AboutSectionProps = {
   imageCaption?: string;
   /** Career timeline entries */
   career: CareerEntry[];
+  /** Operating system: design review cadence, collaboration model, mentoring */
+  operatingSystem?: string[];
 };
 
 export function AboutSection({
@@ -24,6 +26,7 @@ export function AboutSection({
   imageSrc,
   imageCaption,
   career,
+  operatingSystem,
 }: AboutSectionProps) {
   return (
     <Section id="about" title="About" heroStyle>
@@ -94,6 +97,28 @@ export function AboutSection({
           </div>
         </div>
 
+        {/* Operating system / leadership */}
+        {operatingSystem && operatingSystem.length > 0 && (
+          <div>
+            <p
+              className="mb-6 text-lg font-extralight text-zinc-400/90 sm:text-xl"
+              style={{ fontFamily: "var(--font-crimson)" }}
+            >
+              How I work
+            </p>
+            <ul
+              className="space-y-3 text-base text-zinc-50"
+              style={{ fontFamily: "var(--font-outfit)" }}
+            >
+              {operatingSystem.map((line, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-500" />
+                  {line}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </Section>
   );

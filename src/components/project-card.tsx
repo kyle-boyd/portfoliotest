@@ -112,6 +112,8 @@ export function ProjectCard({
           <img
             src={assetUrl(imageSrc)}
             alt={title}
+            loading="lazy"
+            decoding="async"
             className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[10px]"
           />
         </div>

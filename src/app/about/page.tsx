@@ -1,5 +1,6 @@
 import { AboutSection } from "@/components/about-section";
 import { ConnectSection, ConnectLinks } from "@/components/connect-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
 import { ToolsSection } from "@/components/tools-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -22,6 +23,13 @@ const ABOUT_CAREER = [
   { role: "Experience Designer - Physical Environments", company: "Various architecture firms", year: "2015-2022" },
 ];
 
+const ABOUT_OPERATING_SYSTEM = [
+  "Design review cadence: I run regular design critiques to align on craft and direction, and use async feedback loops so distributed teams stay in sync.",
+  "Collaboration model: I partner closely with PM and engineering from discovery through launch—sharing Figma early, documenting decisions, and aligning on tradeoffs.",
+  "Mentoring & onboarding: I create design documentation and component libraries that help new designers ramp quickly and maintain consistency across the product.",
+  "Raising team quality: At Acelab I advocated for and built a design system that reduced handoff friction and scaled design quality across the application.",
+];
+
 export default function AboutPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#080808] text-zinc-100">
@@ -35,11 +43,14 @@ export default function AboutPage() {
           imageSrc={assetUrl("/images/hiking.jpeg")}
           imageCaption="Hiking in the Rockies (I'm the one on the right)"
           career={ABOUT_CAREER}
+          operatingSystem={ABOUT_OPERATING_SYSTEM}
         />
 
         <ConnectLinks />
 
         <ToolsSection />
+
+        <TestimonialsSection />
 
         <ConnectSection />
       </div>

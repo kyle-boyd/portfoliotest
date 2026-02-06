@@ -3,7 +3,7 @@ import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { getSelectedWork } from "@/data/case-studies";
+import { getFeaturedWork } from "@/data/case-studies";
 import { ProjectCard } from "@/components/project-card";
 
 export const metadata = {
@@ -32,12 +32,19 @@ export default function HomePage() {
         <Section
           id="work"
           title="Work"
-          subtitle="See case studies of some projects that I have worked on."
+          subtitle="Selected case studies with quantified impact and enterprise systems thinking."
           viewAllHref="/work"
           heroStyle
         >
+          <p
+            className="mb-12 text-base text-zinc-400"
+            style={{ fontFamily: "var(--font-outfit)" }}
+          >
+            Start here: CoEnterprise, Syncrofy, Lighthouse, and Acelab showcase
+            my strongest enterprise UX and measurable impact.
+          </p>
           <div className="grid grid-cols-1 gap-24 md:grid-cols-1">
-            {getSelectedWork().slice(0, 3).map((project) => (
+            {getFeaturedWork().map((project) => (
               <ProjectCard key={project.slug} {...project} />
             ))}
           </div>
